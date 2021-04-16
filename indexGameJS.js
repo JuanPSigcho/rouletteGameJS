@@ -9,7 +9,11 @@ class Game {
   constructor() {
     this.initialize();
     this.generateSequence();
+<<<<<<< HEAD
     setTimeout(this.nextLevel, 500);
+=======
+    this.nextLevel();
+>>>>>>> Funcionalities added
   }
 
   initialize() {
@@ -138,6 +142,39 @@ class Game {
       this.deleteEventsClick();
       this.initialize();
     });
+  }
+
+  nextLevel() {
+    this.iluminateSequence();
+  }
+
+  convertNumberToColor(numberColor) {
+    switch (numberColor) {
+      case 0:
+        return 'ligthBlue';
+      case 1:
+        return 'violet';
+      case 2:
+        return ' orange';
+      case 3:
+        return 'green';
+    }
+  }
+
+  iluminateSequence() {
+    for (var i = 0; i < this.level; i++) {
+      let color = this.convertNumberToColor(this.sequence[i]);
+      setTimeout(() => this.iluminateColor(color), i * 1000);
+    }
+  }
+
+  iluminateColor(color) {
+    this.colors[color].classList.add('light');
+    setTimeout(() => this.turnOffColor(color), 500);
+  }
+
+  turnOffColor(color) {
+    this.colors[color].classList.remove('light');
   }
 }
 
