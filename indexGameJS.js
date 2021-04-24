@@ -3,24 +3,36 @@ const violet = document.getElementById('violet');
 const orange = document.getElementById('orange');
 const green = document.getElementById('green');
 const btnStart = document.getElementById('btnStart');
+<<<<<<< HEAD
 const LAST_LEVEL = 2;
+=======
+const LAST_LEVEL = 10;
+>>>>>>> Functionality Add
 
 class Game {
   constructor() {
     this.initialize();
     this.generateSequence();
 <<<<<<< HEAD
+<<<<<<< HEAD
     setTimeout(this.nextLevel, 500);
 =======
     this.nextLevel();
 >>>>>>> Funcionalities added
+=======
+    setTimeout(this.nextLevel, 500);
+>>>>>>> Functionality Add
   }
 
   initialize() {
     this.initialize = this.initialize.bind(this);
     this.chooseColor = this.chooseColor.bind(this);
     this.nextLevel = this.nextLevel.bind(this);
+<<<<<<< HEAD
     this.toggleBtnStart();
+=======
+    btnStart.classList.add('hide');
+>>>>>>> Functionality Add
     this.level = 1;
     this.colors = {
       ligthBlue,
@@ -121,11 +133,16 @@ class Game {
         this.level++;
         this.deleteEventsClick();
         if (this.level === LAST_LEVEL + 1) {
+<<<<<<< HEAD
           this.gameWin();
+=======
+          console.log('Win');
+>>>>>>> Functionality Add
         } else {
           setTimeout(this.nextLevel, 1500);
         }
       }
+<<<<<<< HEAD
     } else {
       this.gameLost();
     }
@@ -175,6 +192,9 @@ class Game {
 
   turnOffColor(color) {
     this.colors[color].classList.remove('light');
+=======
+    }
+>>>>>>> Functionality Add
   }
 }
 
