@@ -3,7 +3,7 @@ const violet = document.getElementById('violet');
 const orange = document.getElementById('orange');
 const green = document.getElementById('green');
 const btnStart = document.getElementById('btnStart');
-const LAST_LEVEL = 10;
+const LAST_LEVEL = 2;
 
 class Game {
   constructor() {
@@ -13,9 +13,10 @@ class Game {
   }
 
   initialize() {
+    this.initialize = this.initialize.bind(this);
     this.chooseColor = this.chooseColor.bind(this);
     this.nextLevel = this.nextLevel.bind(this);
-    btnStart.classList.add('hide');
+    this.toggleBtnStart();
     this.level = 1;
     this.colors = {
       ligthBlue,
@@ -25,10 +26,18 @@ class Game {
     };
   }
 
+  toggleBtnStart() {
+    if (btnStart.classList.contains('hide')) {
+      btnStart.classList.remove('hide');
+    } else {
+      btnStart.classList.add('hide');
+    }
+  }
+
   generateSequence() {
     this.sequence = new Array(LAST_LEVEL)
       .fill(0)
-      .map((n) => Math.floor(Math.random() * 4));
+      .map(() => Math.floor(Math.random() * 4));
   }
 
   nextLevel() {
@@ -108,12 +117,27 @@ class Game {
         this.level++;
         this.deleteEventsClick();
         if (this.level === LAST_LEVEL + 1) {
-          console.log('Win');
+          this.gameWin();
         } else {
           setTimeout(this.nextLevel, 1500);
         }
       }
+    } else {
+      this.gameLost();
     }
+  }
+
+  gameWin() {
+    swal
+      .fire('Game say: ', 'Congratulations, you win the game', 'success')
+      .then(this.initialize);
+  }
+
+  gameLost() {
+    swal.fire('Game say: ', 'Sorry, you lost the game :(', 'error').then(() => {
+      this.deleteEventsClick();
+      this.initialize();
+    });
   }
 }
 
