@@ -144,4 +144,7 @@ class Game {
 function startGame() {
   //var game = new Game();
   window.game = new Game();
+
+  const audioTest = new Audio('/gameJSPlatzi/resources/sounds/dog.mp3');
+  audioTest.play();
 }
