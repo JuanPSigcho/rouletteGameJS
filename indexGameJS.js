@@ -3,7 +3,7 @@ const violet = document.getElementById('violet');
 const orange = document.getElementById('orange');
 const green = document.getElementById('green');
 const btnStart = document.getElementById('btnStart');
-const LAST_LEVEL = 2;
+const LAST_LEVEL = 5;
 
 class Game {
   constructor() {
@@ -74,7 +74,6 @@ class Game {
   }
 
   iluminateSequence() {
-    console.log('this.level', this.level, 'sequence', this.sequence);
     for (var i = 0; i < this.level; i++) {
       let color = this.convertNumberToColor(this.sequence[i]);
       setTimeout(() => this.iluminateColor(color), i * 2000);
@@ -82,8 +81,6 @@ class Game {
   }
 
   iluminateColor(color) {
-    console.log('color>>>>', color);
-
     this.colors[color].classList.add('light');
     setTimeout(() => this.turnOffColor(color), 500);
   }
